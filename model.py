@@ -18,14 +18,12 @@ def add_note():
 
 
 def show_all_notes():
-    if os.path.isfile(notes) and os.stat(notes).st_size!=0:
+    if os.stat(notes).st_size!=0:
         print("Заметки\n")
         with open(notes, "r", newline="", encoding='utf-8') as file:
             reader = csv.reader(file, delimiter=';')
             for row in reader:
                 print_noteslist(row)
-    else:
-        print("Нет заметок")
 
 
 def open_note():

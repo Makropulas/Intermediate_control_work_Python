@@ -1,3 +1,4 @@
+import os
 import model
 import view
 
@@ -15,7 +16,11 @@ def menu():
         model.add_note()
         waiting_for_input()
     elif act == '2':
-        submenu()
+        if os.path.isfile(model.notes) and os.stat(model.notes).st_size!=0:
+            submenu()
+        else:
+            print("\nНет заметок")
+            waiting_for_input()
     elif act == '3':
         exit()
     else:
